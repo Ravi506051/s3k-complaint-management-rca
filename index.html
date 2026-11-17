@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A fictional customer complaint workflow with human-governed AI suggestions.">
+  <title>Resolve | Complaint operations</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assistant.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#overview" aria-label="Resolve home"><span class="brand-mark">R<span>.</span></span><span>RESOLVE<small>Operations workspace</small></span></a>
+      <div class="workspace-label">WORKSPACE <span>01 / 04</span></div>
+      <nav aria-label="Primary navigation">
+        <a class="nav-link active" href="#overview"><span>◧</span> Overview</a>
+        <a class="nav-link" href="#cases"><span>▤</span> Complaints <b id="nav-count">0</b></a>
+        <a class="nav-link" href="#activity"><span>◷</span> Activity log</a>
+        <a class="nav-link" href="#method"><span>✳</span> Method</a>
+      </nav>
+      <div class="sidebar-note"><div class="note-icon">↗</div><strong>Human decisions, clear records.</strong><p>Suggestions help teams act faster. People own every customer-facing outcome.</p></div>
+      <div class="sidebar-foot"><span class="pulse"></span> Fictional case study · Local demo</div>
+    </aside>
+    <main>
+      <header class="topbar"><div><span class="breadcrumb">AI SERVICES</span><span class="crumb-sep">/</span><span>Complaint operations</span></div><div class="top-actions"><span class="date" id="today"></span><button class="avatar" type="button" title="Demo workspace">RR</button></div></header>
+      <section id="overview" class="page-content">
+        <div class="hero"><div><div class="eyebrow"><span class="eyebrow-dot"></span> SERVICE INTELLIGENCE / 2026</div><h1>Every complaint has<br><em>a clear next step.</em></h1><p>Capture, investigate and resolve customer issues with accountable owners, visible deadlines and reviewable suggestions.</p><div class="hero-actions"><button id="new-case" class="button primary" type="button">+ New complaint <span>↗</span></button><a class="text-link" href="#cases">View case queue <span>→</span></a></div></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="signal-card"><span class="signal-top">CASE SIGNAL</span><strong>BX-204</strong><span>Packaging · Quality review</span><div class="signal-line"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></div>
+        <div class="section-heading"><div><span class="kicker">TODAY'S PICTURE</span><h2>Operational pulse</h2></div><span class="subtle">Live from the demo database</span></div>
+        <div class="metrics"><article class="metric"><div class="metric-top"><span>Open cases</span><span class="metric-icon">↗</span></div><strong id="metric-open">—</strong><small>Across all departments</small></article><article class="metric"><div class="metric-top"><span>Past target date</span><span class="metric-icon warning">!</span></div><strong id="metric-overdue">—</strong><small>Needs immediate review</small></article><article class="metric"><div class="metric-top"><span>Awaiting owner</span><span class="metric-icon">◎</span></div><strong id="metric-unassigned">—</strong><small>Not yet assigned by a person</small></article><article class="metric"><div class="metric-top"><span>Resolved</span><span class="metric-icon green">✓</span></div><strong id="metric-resolved">—</strong><small>Human-approved outcomes</small></article></div>
+        <section id="cases" class="case-section"><div class="section-heading"><div><span class="kicker">CASE QUEUE</span><h2>Complaints in motion</h2></div><button class="button light" id="refresh" type="button">↻ Refresh</button></div><div class="table-card"><div class="table-toolbar"><div class="search-wrap"><span>⌕</span><input id="search" aria-label="Search complaints" placeholder="Search customer, batch or case ID"></div><select id="status-filter" aria-label="Filter by status"><option value="">All statuses</option><option>New</option><option>Investigating</option><option>Pending approval</option><option>Resolved</option></select><span id="results-count" class="results-count"></span></div><div class="table-scroll"><table><thead><tr><th>CASE / CUSTOMER</th><th>CATEGORY</th><th>PRIORITY</th><th>OWNER</th><th>TARGET</th><th>STATUS</th><th aria-label="Open"></th></tr></thead><tbody id="case-rows"></tbody></table></div></div></section>
+        <div class="lower-grid"><section id="activity" class="panel"><div class="panel-heading"><div><span class="kicker">TRACEABILITY</span><h2>Recent activity</h2></div><span class="panel-symbol">↗</span></div><div id="activity-list" class="activity-list"></div></section><section id="method" class="panel method-panel"><div class="panel-heading"><div><span class="kicker">HOW IT WORKS</span><h2>Assisted, accountable.</h2></div><span class="panel-symbol">✳</span></div><div class="method-step"><b>01</b><div><strong>Capture & suggest</strong><p>Incoming text gets a rule-based category and priority suggestion. Similar batches are surfaced for review.</p></div></div><div class="method-step"><b>02</b><div><strong>Investigate & document</strong><p>A person assigns ownership, records root cause and corrective action, and tracks the deadline.</p></div></div><div class="method-step"><b>03</b><div><strong>Approve & communicate</strong><p>A reviewer confirms RCA, CAPA and resolution before the case is marked resolved.</p></div></div><div class="method-foot">Demo rules are illustrative; no automated customer messages are sent.</div></section></div>
+        <section class="panel assistant-panel"><div class="panel-heading"><div><span class="kicker">CONVERSATIONAL STATUS</span><h2>Ask about a case</h2></div><span class="panel-symbol">⌕</span></div><p class="form-note">Try “What is the status of CC-001?” The response uses recorded case data only.</p><form id="assistant-form" class="assistant-form"><input id="assistant-question" aria-label="Ask about a complaint" required placeholder="What is the status of CC-001?"><button class="button primary" type="submit">Ask <span>→</span></button></form><p id="assistant-answer" class="assistant-answer" aria-live="polite">Recorded status will appear here.</p></section>
+      </section>
+    </main>
+  </div>
+  <dialog id="case-dialog"><div class="dialog-head"><div><span class="kicker">CASE FILE</span><h2 id="dialog-title">Complaint details</h2></div><button class="icon-button" id="close-case" aria-label="Close details" type="button">×</button></div><div id="case-detail"></div></dialog>
+  <dialog id="new-dialog"><div class="dialog-head"><div><span class="kicker">NEW INTAKE</span><h2>Capture a complaint</h2></div><button class="icon-button" id="close-new" aria-label="Close form" type="button">×</button></div><form id="new-form"><label>Customer name<input name="customer" maxlength="120" required placeholder="e.g. Aster Foods"></label><div class="form-grid"><label>Batch / reference<input name="batch" maxlength="40" required placeholder="BX-204"></label><label>Channel<select name="channel"><option>Email</option><option>Phone</option><option>Excel</option></select></label></div><label>Issue description<textarea name="description" minlength="12" maxlength="2000" required placeholder="What did the customer report?"></textarea></label><p class="form-note">Category and priority will be suggested. A person must review routing.</p><button class="button primary wide" type="submit">Create case <span>↗</span></button></form></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
